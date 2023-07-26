@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:spotify_clone_ui/app/core/resources/colors.dart';
 import 'package:spotify_clone_ui/app/core/routes/pages.dart';
 import 'package:spotify_clone_ui/app/core/routes/routes.dart';
 
@@ -17,14 +18,15 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.white,
+        appBarTheme: AppBarTheme(
+            backgroundColor: ColorPalette.dashboardColor,
             systemOverlayStyle: SystemUiOverlayStyle.light),
         fontFamily: "Poppins",
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: ColorPalette.dashboardColor,
       ),
       getPages: Pages.pages,
-      initialRoute: Routes.dashboard,
+      transitionDuration: const Duration(milliseconds: 500),
+      initialRoute: Routes.splash,
     );
   }
 }

@@ -18,12 +18,13 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        appBarTheme: AppBarTheme(
-            backgroundColor: ColorPalette.dashboardColor,
-            systemOverlayStyle: SystemUiOverlayStyle.light),
-        fontFamily: "Poppins",
-        scaffoldBackgroundColor: ColorPalette.dashboardColor,
-      ),
+          appBarTheme: AppBarTheme(
+              backgroundColor: ColorPalette.dashboardColor,
+              systemOverlayStyle: SystemUiOverlayStyle.light),
+          fontFamily: "Poppins",
+          scaffoldBackgroundColor: ColorPalette.dashboardColor,
+          bottomSheetTheme:
+              const BottomSheetThemeData(backgroundColor: Colors.transparent)),
       getPages: Pages.pages,
       transitionDuration: const Duration(milliseconds: 500),
       initialRoute: Routes.splash,

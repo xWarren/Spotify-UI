@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
+class NavigationBarController extends GetxController {
+  Rx<int> currentIndex = 0.obs;
   final scrollController = ScrollController();
   Rx<bool> isVisible = true.obs;
+
+  void onTap(int index) {
+    currentIndex.value = index;
+  }
 
   void scrollState() {
     scrollController;

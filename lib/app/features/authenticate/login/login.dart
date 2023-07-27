@@ -18,36 +18,77 @@ class LoginScreen extends GetView<LoginController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildWelcomeText(),
+              _buildSpotifyText(),
               const SizedBox(height: 50),
               _buildEmailText(),
               _buildEmailField(),
               _buildPasswordText(),
               _buildPasswordField(),
-              const SizedBox(height: 100),
+              const SizedBox(height: 10),
               Center(
                 child: SizedBox(
                     width: Get.width / 2.5,
                     height: 50,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: ColorPalette.titleColor,
+                            backgroundColor: ColorPalette.button1,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10))),
                         onPressed: () {
                           if (!controller.key.currentState!.validate()) {
+                            // ignore: avoid_print
                             print("No Input");
                           } else {
-                            Get.toNamed(Routes.home);
+                            Get.toNamed(Routes.navigation);
                           }
                         },
                         child: Text(
                           "Login",
                           style: TextStyle(
-                              color: ColorPalette.dashboardColor,
+                              color: ColorPalette.titleColor,
                               fontSize: 19,
                               fontWeight: FontWeight.w800),
                         ))),
+              ),
+              const SizedBox(height: 30),
+              Center(
+                child: Text(
+                  "or continue with",
+                  style: TextStyle(color: ColorPalette.titleColor),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    Assets.facebookLogo,
+                    height: 30,
+                    width: 50,
+                  ),
+                  const SizedBox(width: 10),
+                  Image.asset(
+                    Assets.appleLogo,
+                    height: 30,
+                    width: 50,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 50),
+              GestureDetector(
+                onTap: () {
+                  Get.snackbar("Message:", "No screen for Forgot Password yet.",
+                      backgroundColor: ColorPalette.titleColor);
+                },
+                child: Center(
+                  child: Text(
+                    "Forgot your Password?",
+                    style: TextStyle(
+                        color: ColorPalette.titleColor,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700),
+                  ),
+                ),
               )
             ],
           ),
@@ -56,17 +97,30 @@ class LoginScreen extends GetView<LoginController> {
     );
   }
 
-  Padding _buildWelcomeText() {
+  Padding _buildSpotifyText() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-      child: Center(
-        child: Text(
-          "Welcome",
-          style: TextStyle(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(Assets.logo),
+          const SizedBox(width: 10),
+          Text(
+            "Spotify",
+            style: TextStyle(
               color: ColorPalette.titleColor,
               fontWeight: FontWeight.w700,
-              fontSize: 35),
-        ),
+              fontSize: 35,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Text(
+              "®",
+              style: TextStyle(color: ColorPalette.titleColor, fontSize: 8),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -158,7 +212,7 @@ class LoginScreen extends GetView<LoginController> {
             counterStyle: TextStyle(color: ColorPalette.titleColor),
             fillColor: ColorPalette.fieldColor,
             filled: true,
-            hintText: "Enter your email",
+            hintText: "Enter your password",
             hintStyle: TextStyle(color: ColorPalette.titleColor),
             labelStyle: TextStyle(color: ColorPalette.titleColor),
             enabledBorder:
